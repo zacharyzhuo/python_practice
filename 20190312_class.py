@@ -23,6 +23,7 @@ print("他 " + str(my_dog.age) + " 歲")
 my_dog.sit()
 my_dog.roll_over()
 
+
 # 類別運用
 class Car():
     """A simple attempt to represent a car."""
@@ -69,6 +70,7 @@ my_new_car.read_odometer()
 my_new_car.increment_odometer(1000)
 my_new_car.read_odometer()
 
+
 class Battery():
     """A simple attempt to model a battery for an electric car."""
 
@@ -80,6 +82,7 @@ class Battery():
         """Print a statement describing the battery size."""
         print("This car has a " + str(self.battery_size) +
         "-kWh battery.")
+
 
 # 繼承
 class ElectricCar(Car):
@@ -101,3 +104,49 @@ my_tesla = ElectricCar('tesla', 'model s', 2016)
 print(my_tesla.get_descriptive_name())
 my_tesla.battery.describe_battery() # 把實例當成屬性
 my_tesla.fill_gas_tank()
+
+# Python 標準程式庫
+# OrderedDict 會記錄字典的新增順序
+from collections import OrderedDict
+
+favorite_language = OrderedDict()
+
+favorite_language['jen'] = 'python'
+favorite_language['sarah'] = 'c'
+favorite_language['edward'] = 'ruby'
+favorite_language['phil'] = 'python'
+
+for name, language in favorite_language.items():
+    print(name.title() + "'s favorite language is " +
+        language.title() + ".")
+
+# ex
+from random import randint
+
+class Die():
+    """A simple attempt to represent a die."""
+
+    def __init__(self, sides=6):
+        """Initialize attributes to describe a die."""
+        self.sides = sides
+    
+    def roll_die(self):
+        """Print the random value of die."""
+        random_num = randint(1, self.sides)
+        print(random_num)
+
+my_die = Die()
+for x in range(1, 11):
+    my_die.roll_die()
+
+print('------------------------')
+
+ten_sides_die = Die(10)
+for x in range(1, 11):
+    ten_sides_die.roll_die()
+
+print('------------------------')
+
+twenty_sides_die = Die(20)
+for x in range(1, 11):
+    twenty_sides_die.roll_die()
