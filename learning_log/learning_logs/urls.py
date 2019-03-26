@@ -20,10 +20,27 @@ from django.contrib import admin
 from django.urls import path
 
 from . import views
+# 句點是讓Python從目前的urls.py模組所在的資料夾匯入視窗
+
+app_name = "learning_logs" # 必須加上
 
 urlpatterns = [
     # r''為原始字串，^$分別查看字串頭尾
     # 第二引數指定要呼叫的視窗函式
     # 第三引數把這個URL模式的名稱指定為index
+
+    # Home page
     path('', views.index, name='index'),
+
+    # Show all topics.
+    path('topics/', views.topics, name='topics'),
+
+    # Detail page for a single topic
+    path('topics/<int:topic_id>/', views.topic, name='topic'),
+
+    # Page for adding a new topic
+    path('new_topic/', views.new_topic, name='new_topic'),
+
+    # Page for adding a new entry
+    path('new_entry<int:topic_id>/', views.new_entry, name='new_entry'),
 ]

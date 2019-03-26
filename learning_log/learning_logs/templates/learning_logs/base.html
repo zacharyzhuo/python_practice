@@ -1,0 +1,8 @@
+<p>
+    <!-- 為模板標記(template tag)作為連結 -->
+    <a href="{% url 'learning_logs:index' %}">Learning Log</a>
+    <a href="{% url 'learning_logs:topics' %}">Topics</a>
+</p>
+
+{% block content %}{% endblock content %}
+<!-- 佔位用符號，其中含有的資訊會由仔模板來指定 -->

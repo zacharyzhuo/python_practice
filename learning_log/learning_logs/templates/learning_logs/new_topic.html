@@ -1,0 +1,13 @@
+{% extends "learning_logs/base.html" %}
+<!-- 繼承base.html模板 -->
+
+{% block content %}
+<p>Add a new topic:</p>
+<form action="{% url 'learning_logs:new_topic' %}" method='post'>
+     {% csrf_token %}
+     <!-- 防止駭客用表單來取得對伺服器未經授權的存取 -->
+     {{ form.as_p }}
+     <!-- 自動建立表單所需的欄位 as_p修飾符號讓Django以段落格式渲染彩現所有表單元素 -->
+     <button name="submit">add topic</button>
+</form>
+{% endblock content %}

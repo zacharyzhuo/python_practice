@@ -35,3 +35,24 @@ python manage.py createsuperuser
 遷移Entry模型
 python manage.py makemigrations learning_logs
 python manage.py migrate
+
+Django shell
+python manage.py shell
+(測試)
+>>>from learning_logs.models import Topic
+>>>Topic.objects.all()
+
+>>>topics = Topic.objects.all()
+>>>for topic in topics:
+...	print(topic.id, topic)
+
+>>>t = Topic.objects.get(id=1)
+>>>t.text
+>>>t.date_added
+>>>t.entry_set.all()
+
+離開按 crrl+z
+
+# r''為原始字串，^$分別查看字串頭尾
+    # 第二引數指定要呼叫的視窗函式
+    # 第三引數把這個URL模式的名稱指定為index
