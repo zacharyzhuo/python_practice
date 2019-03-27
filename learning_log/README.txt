@@ -32,10 +32,6 @@ python manage.py migrate
 建立Superuser
 python manage.py createsuperuser
 
-遷移Entry模型
-python manage.py makemigrations learning_logs
-python manage.py migrate
-
 Django shell
 python manage.py shell
 (測試)
@@ -44,7 +40,7 @@ python manage.py shell
 
 >>>topics = Topic.objects.all()
 >>>for topic in topics:
-...	print(topic.id, topic)
+...  print(topic.id, topic)
 
 >>>t = Topic.objects.get(id=1)
 >>>t.text
@@ -53,6 +49,31 @@ python manage.py shell
 
 離開按 crrl+z
 
-# r''為原始字串，^$分別查看字串頭尾
-    # 第二引數指定要呼叫的視窗函式
-    # 第三引數把這個URL模式的名稱指定為index
+建立使用者帳號
+users應用程式
+python manage.py startapp users
+
+開啟Django shell會話模式
+python manage.py shell
+>>>from django.contrib.auth.models import User
+>>>User.objects.all()
+>>>for user in User.objects.all():
+...  print(user.username, user.id)
+
+python manage.py shell
+>>>from learning_logs.models import Topic
+>>>for topic in Topic.objects.all():
+...  print(topic, topic.owner)
+
+重建資料庫的結構
+python manage.py flush
+
+(要在虛擬環境執行)
+安裝HEROKU必要的套件
+pip install dj-database-url
+pip install dj-static
+pip install static3
+pip install gunicorn
+
+建立requirements.txt 放入套件清單
+pip freeze > requirements.txt

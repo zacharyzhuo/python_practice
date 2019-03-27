@@ -12,6 +12,22 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 
+# My settings
+LOGIN_URL = '/users/login/'
+
+# Settings for django-bootstrap3
+BOOTSTARP3 = {
+    'include_jquery': True,
+}
+
+# Heroku settings
+cwd = os.getcwd()
+if cwd =='/app' or cwd[:4] =='/tmp':
+    import dj_database_url
+    DATABASES = {
+        
+    }
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -38,8 +54,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Third party apps
+    'bootstrap3',
+
     # My apps
     'learning_logs',
+    'users',
 ]
 
 MIDDLEWARE = [

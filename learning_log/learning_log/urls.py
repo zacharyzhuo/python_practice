@@ -18,7 +18,7 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('learning_logs.urls', namespace='learning_logs')),
-    # namespace='learning_logs' 必須定義
+    path('users/', include('users.urls')),
+    path('', include('learning_logs.urls')),
     # include 概念就是，它會將 learning_logs.urls 下的所有 url 前面都冠上 learning_logs/的意思
 ]

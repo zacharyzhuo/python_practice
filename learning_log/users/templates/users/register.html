@@ -1,0 +1,16 @@
+{% extends "learning_logs/base.html" %}
+<!-- 繼承base.html模板 (可以繼承另一個應用程式的模板)-->
+
+{% block content %}
+
+    <form method="post" action="{% url 'users:register' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button name="submit">register</button>
+
+    <input type="hidden" name="next" value="{% url 'learning_logs:index' %}" />
+    <!-- 新增一個隱藏的表單元素next會在成功登入之後重新導向其他頁面 -->
+    </form>
+
+{% endblock content %}
