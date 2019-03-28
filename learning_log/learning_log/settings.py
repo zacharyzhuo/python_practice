@@ -21,12 +21,25 @@ BOOTSTARP3 = {
 }
 
 # Heroku settings
-cwd = os.getcwd()
-if cwd =='/app' or cwd[:4] =='/tmp':
+cwd = os.getcwd() # 取得目前的工作目錄
+if cwd =='/app' or cwd[:4] =='/tmp': # 當只有在Heroku部署時才會執行
     import dj_database_url
     DATABASES = {
-        
+        'default': dj_database_url.config(default='postgres://localhost')
     }
+
+    # Honor the 'X-Forwarded-Proto' header for request.is_secure().
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+    # Allow all host headers.
+    ALLOWED_HOSTS = ['*']
+
+    # Static asset configuration
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    STATIC_ROOT = 'staticfiles'
+    STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, 'static')
+    )
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
